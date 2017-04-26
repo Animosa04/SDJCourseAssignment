@@ -1,4 +1,4 @@
-package factoryPattern;
+package viabus;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -8,6 +8,13 @@ import java.util.Date;
 public class Trip extends Tour {
 	DateInterval interval;
 
+	/**
+	 * Constructor of Trip
+	 * @param destination
+	 * @param departureDate
+	 * @param bus
+	 * @param chauffeur
+	 */
 	public Trip(String destination, Date departureDate, String bus,
 			String chauffeur) {
 		super(destination, departureDate, bus, chauffeur);
