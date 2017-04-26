@@ -1,53 +1,56 @@
-package viabus;
+package factoryPattern;
 
 import java.util.Date;
 
 public abstract class Tour {
-	protected String where;
-	protected DateInterval date;
+	protected String destination;
 	protected String bus;
 	protected String chauffeur;
-	
-	public Tour(Date dep, Date arr, String place, String bus, String chauffeur)
-	{
-		date=new DateInterval(dep,arr);
-		where=place;
-		this.bus=bus;
-		this.chauffeur=chauffeur;
+	protected Date departureDate;
+
+	public Tour(String destination, Date departureDate, String bus,
+			String chauffeur) {
+		this.destination = destination;
+		this.bus = bus;
+		this.chauffeur = chauffeur;
+		this.departureDate = departureDate;
 	}
-	
-	public String getBus()
-	{
+
+	public String getBus() {
 		return this.bus;
 	}
-	
-	public void setBus(String b)
-	{
-		bus=b;
+
+	public void setBus(String b) {
+		bus = b;
 	}
-	
-	public String getChauffeur()
-	{
+
+	public String getChauffeur() {
 		return chauffeur;
 	}
-	
-	public void setChauffeur(String c)
-	{
-		this.chauffeur=c;
+
+	public void setChauffeur(String c) {
+		this.chauffeur = c;
 	}
-	
-	public String getPlace()
-	{
-		return where;
+
+	public String getDestination() {
+		return destination;
 	}
-	
-	public void setPlace(String place)
-	{
-		where=place;
+
+	public void setDestination(String place) {
+		destination = place;
 	}
-	
-	public DateInterval getDates()
-	{
-		return date;
+
+	public Date getDepartureDate() {
+		return departureDate;
+	}
+
+	public DateInterval getDateInterval() {
+		return null;
+	}
+
+	@Override
+	public String toString() {
+		return "Destination: " + destination + "\nChauffeur: " + chauffeur
+				+ "\nBus: " + bus;
 	}
 }
