@@ -28,8 +28,10 @@ public abstract class Tour {
 	 * @param chauffeur
 	 *            who will drive the bus
 	 */
+
 	public Tour(String destination, Date departureDate, String bus,
 			String chauffeur) {
+
 		this.destination = destination;
 		this.bus = bus;
 		this.chauffeur = chauffeur;
@@ -109,7 +111,9 @@ public abstract class Tour {
 
 	@Override
 	public String toString() {
+
 		return "Destination: " + destination + "\nChauffeur: " + chauffeur
 				+ "\nBus: " + bus;
+
 	}
 }
