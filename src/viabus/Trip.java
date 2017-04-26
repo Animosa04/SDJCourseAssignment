@@ -6,17 +6,18 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Trip extends Tour {
+	private static final long serialVersionUID = 6407725940834372591L;
 	DateInterval interval;
 
 	/**
 	 * Constructor of Trip
+	 * 
 	 * @param destination
 	 * @param departureDate
 	 * @param bus
 	 * @param chauffeur
 	 */
-	public Trip(String destination, Date departureDate, String bus,
-			String chauffeur) {
+	public Trip(String destination, Date departureDate, String bus, String chauffeur) {
 		super(destination, departureDate, bus, chauffeur);
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(departureDate);
@@ -33,10 +34,7 @@ public class Trip extends Tour {
 	@Override
 	public String toString() {
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		return getClass().getName() + "\nDeparture date: "
-				+ df.format(getDateInterval().getDepartureDate())
-				+ "\nArrival date: "
-				+ df.format(getDateInterval().getArrivalDate())
-				+ super.toString();
+		return getClass().getName() + "\nDeparture date: " + df.format(getDateInterval().getDepartureDate())
+				+ "\nArrival date: " + df.format(getDateInterval().getArrivalDate()) + super.toString();
 	}
 }

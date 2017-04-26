@@ -55,13 +55,10 @@ public class DateInterval implements Serializable {
 	 * 
 	 * @param other
 	 *            date
-	 * @return if two dates are overlapping
+	 * @return if date overlaps the interval
 	 */
-	public boolean checkOverlap(DateInterval other) {
-		return ((this.departureDate.equals(other.departureDate) || this.departureDate
-				.after(other.departureDate)) && (this.arrivalDate
-				.before(other.arrivalDate) || this.arrivalDate
-				.equals(other.arrivalDate)));
+	public boolean checkOverlap(Date other) {
+		return (this.departureDate.before(other) && this.arrivalDate.after(other));
 	}
 
 	/**
@@ -78,7 +75,6 @@ public class DateInterval implements Serializable {
 	@Override
 	public String toString() {
 		DateFormat format = new SimpleDateFormat("dd/MM/yy");
-		return "Departure date: " + format.format(departureDate)
-				+ "\nArrival date: " + format.format(arrivalDate);
+		return "Departure date: " + format.format(departureDate) + "\nArrival date: " + format.format(arrivalDate);
 	}
 }

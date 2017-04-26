@@ -8,9 +8,10 @@
 
 package viabus;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Tour {
+public abstract class Tour implements Serializable {
 	protected String destination;
 	protected String bus;
 	protected String chauffeur;
@@ -29,8 +30,7 @@ public abstract class Tour {
 	 *            who will drive the bus
 	 */
 
-	public Tour(String destination, Date departureDate, String bus,
-			String chauffeur) {
+	public Tour(String destination, Date departureDate, String bus, String chauffeur) {
 
 		this.destination = destination;
 		this.bus = bus;
@@ -112,8 +112,7 @@ public abstract class Tour {
 	@Override
 	public String toString() {
 
-		return "Destination: " + destination + "\nChauffeur: " + chauffeur
-				+ "\nBus: " + bus;
+		return "Destination: " + destination + "\nChauffeur: " + chauffeur + "\nBus: " + bus;
 
 	}
 }
