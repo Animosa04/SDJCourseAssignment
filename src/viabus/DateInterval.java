@@ -1,4 +1,5 @@
 package viabus;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -57,8 +58,10 @@ public class DateInterval implements Serializable {
 	 * @return if two dates are overlapping
 	 */
 	public boolean checkOverlap(DateInterval other) {
-		return (this.departureDate.before(other.arrivalDate) && this.arrivalDate
-				.after(other.departureDate));
+		return ((this.departureDate.equals(other.departureDate) || this.departureDate
+				.after(other.departureDate)) && (this.arrivalDate
+				.before(other.arrivalDate) || this.arrivalDate
+				.equals(other.arrivalDate)));
 	}
 
 	/**
@@ -72,6 +75,7 @@ public class DateInterval implements Serializable {
 	/**
 	 * @return a string with the departure and arrival date
 	 */
+	@Override
 	public String toString() {
 		DateFormat format = new SimpleDateFormat("dd/MM/yy");
 		return "Departure date: " + format.format(departureDate)
