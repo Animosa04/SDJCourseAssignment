@@ -8,6 +8,13 @@ import java.util.Date;
 public class Travel extends Tour {
 	DateInterval interval;
 
+	/**
+	 * Constructor of Travel
+	 * @param destination
+	 * @param departureDate
+	 * @param bus
+	 * @param chauffeur
+	 */
 	public Travel(String destination, Date departureDate, String bus,
 			String chauffeur) {
 		super(destination, departureDate, bus, chauffeur);
