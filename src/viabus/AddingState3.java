@@ -1,6 +1,5 @@
 package viabus;
 
-
 public class AddingState3 extends CliState {
 
 	@Override
@@ -12,15 +11,8 @@ public class AddingState3 extends CliState {
 			break;
 		default:
 			try {
-				if (cli.getData() instanceof Trip) {
-					Trip trip = (Trip) cli.getData();
-					trip.setBus(command);
-					cli.setData(trip);
-				} else {
-					Travel travel = (Travel) cli.getData();
-					travel.setBus(command);
-					cli.setData(travel);
-				}
+				Tour tour = (Tour) cli.getData();
+				tour.setBus(command);
 				cli.setState(ADDING_STATE_4);
 			} catch (Exception e) {
 				e.printStackTrace();
