@@ -17,8 +17,29 @@ public class Trip extends Tour {
 	 * @param bus
 	 * @param chauffeur
 	 */
-	public Trip(String destination, Date departureDate, String bus, String chauffeur) {
+	public Trip(String destination, Date departureDate, String bus,
+			String chauffeur) {
 		super(destination, departureDate, bus, chauffeur);
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(departureDate);
+		cal.add(Calendar.DATE, 1);
+		Date arrivalDate = cal.getTime();
+		interval = new DateInterval(departureDate, arrivalDate);
+	}
+
+	public Trip() {
+		super();
+	}
+
+	/**
+	 * sets the departure date and calculates the arrival date and the date
+	 * interval
+	 * 
+	 * @param depDate
+	 */
+	@Override
+	public void setDepartureDate(Date depDate) {
+		super.setDepartureDate(depDate);
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(departureDate);
 		cal.add(Calendar.DATE, 1);
@@ -34,7 +55,10 @@ public class Trip extends Tour {
 	@Override
 	public String toString() {
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		return getClass().getName() + "\nDeparture date: " + df.format(getDateInterval().getDepartureDate())
-				+ "\nArrival date: " + df.format(getDateInterval().getArrivalDate()) + super.toString();
+		return getClass().getName() + "\nDeparture date: "
+				+ df.format(getDateInterval().getDepartureDate())
+				+ "\nArrival date: "
+				+ df.format(getDateInterval().getArrivalDate())
+				+ super.toString();
 	}
 }

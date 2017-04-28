@@ -1,6 +1,5 @@
 package viabus;
 
-import java.util.Date;
 
 public class TourFactory {
 
@@ -12,12 +11,11 @@ public class TourFactory {
 	 * @param chauffeur
 	 * @return a trip or travel depending on the boolean isTrip
 	 */
-	public Tour getTour(boolean isTrip, String destination, Date departureDate,
-			String bus, String chauffeur) {
+	public Tour getTour(boolean isTrip) {
 		if (isTrip)
-			return new Trip(destination, departureDate, bus, chauffeur);
+			return new Trip();
 		else
-			return new Travel(destination, departureDate, bus, chauffeur);
+			return new Travel();
 	}
 
 	// public static Tour getTour(String where, Date dep, Date arr, String bus,
