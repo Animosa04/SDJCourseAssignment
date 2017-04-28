@@ -31,12 +31,16 @@ public abstract class Tour implements Serializable {
 	 *            who will drive the bus
 	 */
 
-	public Tour(String destination, Date departureDate, String bus, String chauffeur) {
+	public Tour(String destination, Date departureDate, String bus,
+			String chauffeur) {
 
 		this.destination = destination;
 		this.bus = bus;
 		this.chauffeur = chauffeur;
 		this.departureDate = departureDate;
+	}
+
+	public Tour() {
 	}
 
 	/**
@@ -104,7 +108,14 @@ public abstract class Tour implements Serializable {
 	}
 
 	/**
-	 * Abstract Getting the date interval
+	 * Sets the departure date
+	 * 
+	 * @param departureDate
+	 */
+	public abstract void setDepartureDate(Date departureDate);
+
+	/**
+	 * Getting the date interval
 	 * 
 	 * @return dateInterval
 	 */
@@ -112,8 +123,8 @@ public abstract class Tour implements Serializable {
 
 	@Override
 	public String toString() {
-
-		return "Destination: " + destination + "\nChauffeur: " + chauffeur + "\nBus: " + bus;
-
+		return "Destination: " + destination + "\nChauffeur: " + chauffeur
+				+ "\nBus: " + bus;
 	}
+
 }
