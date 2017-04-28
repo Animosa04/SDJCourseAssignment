@@ -1,6 +1,5 @@
 package viabus;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,17 +15,10 @@ public class AddingState5 extends CliState {
 		default:
 			try {
 				Date date = new SimpleDateFormat("dd/MM/yyyy").parse(command);
-				if (cli.getData() instanceof Trip) {
-					Trip trip = (Trip) cli.getData();
-					trip.setDepartureDate(date);
-					cli.setData(trip);
-				} else {
-					Travel travel = (Travel) cli.getData();
-					travel.setDepartureDate(date);
-					cli.setData(travel);
-				}
+				Tour tour = (Tour) cli.getData();
+				tour.setDepartureDate(date);
 				System.out.println("Tour saved!");
-				cli.setState(MAIN_MENU);
+				cli.toursList.add(tour);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

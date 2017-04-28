@@ -1,6 +1,5 @@
 package viabus;
 
-
 public class AddingState extends CliState {
 
 	@Override
@@ -17,6 +16,7 @@ public class AddingState extends CliState {
 				if (command.equalsIgnoreCase("Trip"))
 					isTrip = true;
 				cli.setData(tf.getTour(isTrip));
+				cli.setState(ADDING_STATE_2);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
