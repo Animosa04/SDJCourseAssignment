@@ -1,6 +1,6 @@
 package viabus;
 
-import java.text.SimpleDateFormat;
+import java.rmi.RemoteException;
 import java.util.Date;
 
 public class AddingState5 extends CliState {
@@ -14,14 +14,18 @@ public class AddingState5 extends CliState {
 			break;
 		default:
 			try {
-				Date date = new SimpleDateFormat("dd/MM/yyyy").parse(command);
+				@SuppressWarnings("deprecation")
+				Date date = new Date(command);
 				Tour tour = (Tour) cli.getData();
 				tour.setDepartureDate(date);
-				System.out.println("Tour saved!");
 				cli.toursList.add(tour);
-			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println("Tour saved!\n");
+			} catch (IllegalArgumentException e) {
+				cli.show("Error parsing your input, please try again\n");
+			} catch (RemoteException e) {
+				cli.show("Error connecting to the server, please try again later\n");
 			}
+
 		}
 	}
 

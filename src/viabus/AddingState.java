@@ -12,13 +12,10 @@ public class AddingState extends CliState {
 		default:
 			try {
 				TourFactory tf = new TourFactory();
-				boolean isTrip = false;
-				if (command.equalsIgnoreCase("Trip"))
-					isTrip = true;
-				cli.setData(tf.getTour(isTrip));
+				cli.setData(tf.getTour(command));
 				cli.setState(ADDING_STATE_2);
-			} catch (Exception e) {
-				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				cli.show("Invalid Input, try again\n");
 			}
 		}
 	}

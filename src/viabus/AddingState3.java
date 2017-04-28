@@ -10,13 +10,9 @@ public class AddingState3 extends CliState {
 			cli.setState(ADDING_STATE_2);
 			break;
 		default:
-			try {
-				Tour tour = (Tour) cli.getData();
-				tour.setBus(command);
-				cli.setState(ADDING_STATE_4);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			Tour tour = (Tour) cli.getData();
+			tour.setBus(command);
+			cli.setState(ADDING_STATE_4);
 		}
 	}
 

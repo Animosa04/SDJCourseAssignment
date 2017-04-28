@@ -1,35 +1,35 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import viabus.Tour;
 import viabus.TourFactory;
+import viabus.Travel;
+import viabus.Trip;
 
 public class TourFactoryTest {
+	private TourFactory tf;
 
 	@Before
 	public void setUp() throws Exception {
+		tf = new TourFactory();
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void testGetTour() {
-		TourFactory tf = new TourFactory();
-		Tour trip1 = tf.getTour(true);
-		Tour trip2 = tf.getTour(true);
-		Tour travel1 = tf.getTour(false);
-		Tour travel2 = tf.getTour(false);
-		assertEquals(trip1.getClass(), trip2.getClass());
-		assertEquals(travel1.getClass(), travel2.getClass());
-		Assert.assertNotEquals(trip1.getClass(), travel1.getClass());
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetTour() throws IllegalArgumentException {
+		Assert.assertTrue(tf.getTour("trip") instanceof Trip);
+		Assert.assertTrue(tf.getTour("travel") instanceof Travel);
+		Assert.assertTrue(tf.getTour("Trip") instanceof Trip);
+		Assert.assertTrue(tf.getTour("Travel") instanceof Travel);
+		Assert.assertTrue(tf.getTour("TrIp") instanceof Trip);
+		Assert.assertTrue(tf.getTour("tRaVeL") instanceof Travel);
+		tf.getTour("foobar");
 	}
 
 }
