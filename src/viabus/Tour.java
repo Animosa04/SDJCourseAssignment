@@ -111,12 +111,10 @@ public abstract class Tour implements Serializable {
 	 * 
 	 * @param departureDate
 	 */
-	public void setDepartureDate(Date departureDate) {
-		this.departureDate = departureDate;
-	}
+	public abstract void setDepartureDate(Date departureDate);
 
 	/**
-	 * Abstract Getting the date interval
+	 * Getting the date interval
 	 * 
 	 * @return dateInterval
 	 */
@@ -124,10 +122,8 @@ public abstract class Tour implements Serializable {
 
 	@Override
 	public String toString() {
-
 		return "Destination: " + destination + "\nChauffeur: " + chauffeur
 				+ "\nBus: " + bus;
-
 	}
 
 }

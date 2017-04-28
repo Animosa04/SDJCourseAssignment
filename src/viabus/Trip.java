@@ -10,6 +10,13 @@ public class Trip extends Tour {
 	DateInterval interval;
 
 	/**
+	 * empty constructor
+	 */
+	public Trip() {
+		super();
+	}
+
+	/**
 	 * Constructor of Trip
 	 * 
 	 * @param destination
@@ -28,13 +35,6 @@ public class Trip extends Tour {
 	}
 
 	/**
-	 * empty constructor
-	 */
-	public Trip() {
-		super();
-	}
-
-	/**
 	 * sets the departure date and calculates the arrival date and the date
 	 * interval
 	 * 
@@ -42,7 +42,7 @@ public class Trip extends Tour {
 	 */
 	@Override
 	public void setDepartureDate(Date depDate) {
-		super.setDepartureDate(depDate);
+		super.departureDate = depDate;
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(departureDate);
 		cal.add(Calendar.DATE, 1);
@@ -50,11 +50,19 @@ public class Trip extends Tour {
 		interval = new DateInterval(departureDate, arrivalDate);
 	}
 
+	/**
+	 * @return date interval of the trip
+	 */
 	@Override
 	public DateInterval getDateInterval() {
 		return interval;
 	}
 
+	/**
+	 * overrides the toString method in its superclass
+	 * 
+	 * @return a string representation of a trip
+	 */
 	@Override
 	public String toString() {
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
