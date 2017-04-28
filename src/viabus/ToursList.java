@@ -29,6 +29,7 @@ public class ToursList extends UnicastRemoteObject implements IClientToursList {
 
 	@Override
 	public void update(ACTION a, Tour t) {
+		System.out.println("new update");
 		switch (a) {
 		case ADD:
 			toursList.add(t);
@@ -75,5 +76,14 @@ public class ToursList extends UnicastRemoteObject implements IClientToursList {
 				overlappingTours.add(tour);
 		}
 		return overlappingTours;
+	}
+
+	/**
+	 * Disconnect from the server when the program closes
+	 */
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		server.disconnect(this);
 	}
 }

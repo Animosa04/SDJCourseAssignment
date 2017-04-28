@@ -39,7 +39,7 @@ public class RMServerList extends UnicastRemoteObject implements IServerToursLis
 	}
 
 	@Override
-	public void update(ACTION a, Tour t, IClientToursList client) throws RemoteException {
+	public void update(ACTION a, Tour t, IClientToursList client) {
 		switch (a) {
 		case ADD:
 			System.out.println("added tour");
@@ -50,9 +50,17 @@ public class RMServerList extends UnicastRemoteObject implements IServerToursLis
 			toursList.remove(t);
 			break;
 		}
+		notify(a, t, client);
+	}
+
+	private void notify(ACTION a, Tour t, IClientToursList client) {
 		for (IClientToursList c : observers) {
-			if (c != client)
-				c.update(a, t);
+			try {
+				if (!c.equals(client))
+					c.update(a, t);
+			} catch (RemoteException e) {
+				disconnect(c);
+			}
 		}
 	}
 

@@ -1,13 +1,17 @@
 package viabus;
 
+import java.rmi.RemoteException;
+
 public class CliController implements CliConstants {
 	private CliState state;
 	private CliView view;
 	private Object data;
+	public final ToursList toursList;
 
-	public CliController(CliView view) {
+	public CliController(CliView view) throws RemoteException {
 		this.view = view;
 		this.state = MAIN_MENU.init(this);
+		toursList = new ToursList();
 	}
 
 	/**
@@ -52,14 +56,17 @@ public class CliController implements CliConstants {
 	 * Main loop get input from the view and then process it
 	 * 
 	 * @param args
+	 * @throws RemoteException
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws RemoteException {
 		CliView view = new CliConsole();
 		CliController controller = new CliController(view);
 		String command;
 		do {
 			command = view.get();
 		} while (controller.processCommand(command));
+
+		System.exit(0);
 	}
 
 	/**

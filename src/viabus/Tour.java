@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public abstract class Tour implements Serializable {
+	private static final long serialVersionUID = 449645308350699325L;
 	protected String destination;
 	protected String bus;
 	protected String chauffeur;
