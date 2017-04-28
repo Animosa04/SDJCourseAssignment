@@ -40,6 +40,9 @@ public abstract class Tour implements Serializable {
 		this.departureDate = departureDate;
 	}
 
+	/**
+	 * empty constructor
+	 */
 	public Tour() {
 	}
 
