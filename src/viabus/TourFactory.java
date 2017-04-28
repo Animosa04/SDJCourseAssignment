@@ -3,7 +3,7 @@ package viabus;
 public class TourFactory {
 
 	/**
-	 * @param isTrip
+	 * @param typeOfTour
 	 * @return a trip or travel depending on the boolean isTrip
 	 * @throws Exception
 	 */
