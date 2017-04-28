@@ -27,6 +27,9 @@ public class Trip extends Tour {
 		interval = new DateInterval(departureDate, arrivalDate);
 	}
 
+	/**
+	 * empty constructor
+	 */
 	public Trip() {
 		super();
 	}
