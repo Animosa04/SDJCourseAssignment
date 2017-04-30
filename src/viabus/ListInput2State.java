@@ -1,5 +1,6 @@
 package viabus;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ListInput2State extends CliState {
@@ -14,7 +15,14 @@ public class ListInput2State extends CliState {
 			break;
 		default:
 			try {
-				cli.setData(new DateInterval((Date) cli.getData(), new Date(command)));
+				ArrayList<Tour> tours = cli.toursList
+						.getTourByDateInterval(new DateInterval((Date) cli.getData(), new Date(command)));
+				if (tours.size() == 0)
+					cli.show("Sorry there are no tours on the selected period\n");
+				for (Tour t : tours) {
+					cli.show(t.toString() + "\n");
+				}
+				cli.setState(MAIN_MENU);
 			} catch (IllegalArgumentException e) {
 				cli.show("Unable to identify date, please try again\n");
 			}

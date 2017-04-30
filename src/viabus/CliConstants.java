@@ -1,6 +1,5 @@
 package viabus;
 
-
 public interface CliConstants {
 	CliState MAIN_MENU = new MainMenuState();
 	CliState LIST_INPUT_1 = new ListInput1State();
@@ -10,5 +9,6 @@ public interface CliConstants {
 	CliState ADDING_STATE_3 = new AddingState3();
 	CliState ADDING_STATE_4 = new AddingState4();
 	CliState ADDING_STATE_5 = new AddingState5();
+	CliState REMOVE = new RemoveState();
 
 }

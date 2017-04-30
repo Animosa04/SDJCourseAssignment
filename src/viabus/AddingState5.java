@@ -20,6 +20,7 @@ public class AddingState5 extends CliState {
 				tour.setDepartureDate(date);
 				cli.toursList.add(tour);
 				System.out.println("Tour saved!\n");
+				cli.setState(MAIN_MENU);
 			} catch (IllegalArgumentException e) {
 				cli.show("Error parsing your input, please try again\n");
 			} catch (RemoteException e) {

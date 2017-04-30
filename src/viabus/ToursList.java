@@ -6,7 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 public class ToursList extends UnicastRemoteObject implements IClientToursList {
-	private static final long serialVersionUID = -1178149661353305424L;
+	private static final long serialVersionUID = -117814961353305424L;
 	IServerToursList server;
 	private ArrayList<Tour> toursList;
 
@@ -60,6 +60,22 @@ public class ToursList extends UnicastRemoteObject implements IClientToursList {
 	public void remove(Tour tour) throws RemoteException {
 		toursList.remove(tour);
 		server.update(ACTION.REMOVE, tour, this);
+	}
+
+	/**
+	 * Remove a tour from the ToursList by id
+	 * 
+	 * @param id
+	 * @throws RemoteException
+	 */
+	public void remove(int id) throws RemoteException {
+		for (Tour t : toursList) {
+			if (id == t.id) {
+				remove(t);
+				return;
+			}
+		}
+		throw new IllegalArgumentException("No tour corresponds to id " + id);
 	}
 
 	/**

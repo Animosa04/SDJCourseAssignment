@@ -9,14 +9,17 @@
 package viabus;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class Tour implements Serializable {
-	private static final long serialVersionUID = 449645308350699325L;
+	private static final long serialVersionUID = 44965308350699325L;
 	protected String destination;
 	protected String bus;
 	protected String chauffeur;
 	protected Date departureDate;
+	protected int id;
 
 	/**
 	 * Constructor of Tour
@@ -31,8 +34,7 @@ public abstract class Tour implements Serializable {
 	 *            who will drive the bus
 	 */
 
-	public Tour(String destination, Date departureDate, String bus,
-			String chauffeur) {
+	public Tour(String destination, Date departureDate, String bus, String chauffeur) {
 
 		this.destination = destination;
 		this.bus = bus;
@@ -44,6 +46,7 @@ public abstract class Tour implements Serializable {
 	 * empty constructor
 	 */
 	public Tour() {
+		id = (int) Math.floor(Math.random() * 10000);
 	}
 
 	/**
@@ -126,8 +129,10 @@ public abstract class Tour implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Destination: " + destination + "\nChauffeur: " + chauffeur
-				+ "\nBus: " + bus;
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		return " Id: " + id + " Departure: " + df.format(getDateInterval().getDepartureDate()) + " Arrival: "
+				+ df.format(getDateInterval().getArrivalDate()) + " Destination :" + destination + " Chauffeur: "
+				+ chauffeur + " Bus: " + bus;
 	}
 
 }
