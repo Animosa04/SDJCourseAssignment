@@ -20,16 +20,19 @@ public class ToursList extends UnicastRemoteObject implements IClientToursList {
 	public ToursList() throws RemoteException {
 		toursList = new ArrayList<Tour>();
 		try {
-			server = (IServerToursList) Naming.lookup("rmi://localhost:6666/server");
+			server = (IServerToursList) Naming
+					.lookup("rmi://localhost:6666/server");
 			toursList = server.init(this);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 
+	/**
+	 * Update tourList with changes from the server
+	 */
 	@Override
 	public void update(ACTION a, Tour t) {
-		System.out.println("new update");
 		switch (a) {
 		case ADD:
 			toursList.add(t);
