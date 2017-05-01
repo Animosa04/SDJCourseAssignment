@@ -30,7 +30,7 @@ public class MainMenuState extends CliState {
 	public CliState init(CliController cli) {
 		cli.show(" MAIN	 MENU\n" + "Command	Description\n" + "'add'	add a reservation\n"
 				+ "'rem'	remove a reservation\n" + "'list'	list all reservations\n" + "'back'	go back\n"
-				+ "'help'	display detailed instructions\n" + "'quit'	exit the program\n");
+				+ "'quit'	exit the program\n");
 		cli.setData(null);
 		return this;
 	}
