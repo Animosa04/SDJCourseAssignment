@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 import viabus.ToursList.ACTION;
 
-public class RMServerList extends UnicastRemoteObject implements IServerToursList {
+public class RMServerList extends UnicastRemoteObject implements
+		IServerToursList {
 
 	private static final long serialVersionUID = -334630550756398481L;
 	private ArrayList<Tour> toursList;
@@ -32,12 +33,18 @@ public class RMServerList extends UnicastRemoteObject implements IServerToursLis
 		}
 	}
 
+	/**
+	 * Add a client to the list of clients
+	 */
 	@Override
 	public ArrayList<Tour> init(IClientToursList client) {
 		observers.add(client);
 		return toursList;
 	}
 
+	/**
+	 * Add or remove a tour from the list of tours
+	 */
 	@Override
 	public void update(ACTION a, Tour t, IClientToursList client) {
 		switch (a) {
@@ -53,6 +60,14 @@ public class RMServerList extends UnicastRemoteObject implements IServerToursLis
 		notify(a, t, client);
 	}
 
+	/**
+	 * Update the tour list on each client, that is not the client who
+	 * added/removed a tour
+	 * 
+	 * @param a
+	 * @param t
+	 * @param client
+	 */
 	private void notify(ACTION a, Tour t, IClientToursList client) {
 		for (IClientToursList c : observers) {
 			try {
@@ -64,6 +79,9 @@ public class RMServerList extends UnicastRemoteObject implements IServerToursLis
 		}
 	}
 
+	/**
+	 * Disconnect from the server when the program closes
+	 */
 	@Override
 	public void disconnect(IClientToursList client) {
 		observers.remove(client);
